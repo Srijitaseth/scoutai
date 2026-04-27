@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+pymupdf
+sentence-transformers
+scikit-learn
+reportlab
+pandas
+google-genai
