@@ -81,6 +81,12 @@ export SCOUTAI_EMAIL="your_email@gmail.com"
 export SCOUTAI_EMAIL_PASSWORD="your_gmail_app_password_here"
 ```
 
+Optional frontend URL setup:
+
+```bash
+export FRONTEND_URL="http://localhost:5173"
+```
+
 Run backend:
 
 ```bash
@@ -139,8 +145,29 @@ Open the frontend URL in your browser.
 
 * Gemini API key is required for AI parsing and agent replies.
 * If email sending is used, Gmail App Password is required.
+* The backend reads allowed frontend origins from `FRONTEND_URL` or `FRONTEND_URLS`. Use `FRONTEND_URLS` as a comma-separated list if you need more than one origin.
 * Do not commit API keys or passwords to GitHub.
 * If Gemini quota is exceeded, wait and retry or use a fallback parser.
+
+## Vercel Environment Variables
+
+Set these in your Vercel project settings:
+
+```text
+FRONTEND_URL=https://your-frontend.vercel.app
+```
+
+If you deploy separate preview/production frontends, use:
+
+```text
+FRONTEND_URLS=https://your-production.vercel.app,https://your-preview.vercel.app
+```
+
+For the Vite frontend, set the backend URL:
+
+```text
+VITE_BACKEND_URL=https://your-backend-domain.example.com
+```
 
 ## Sample Run Commands
 

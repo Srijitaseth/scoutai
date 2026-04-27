@@ -21,11 +21,32 @@ from conversation_agent import (
 )
 from email_sender import send_outreach_email
 
+DEFAULT_FRONTEND_URLS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+
+def get_frontend_urls():
+    frontend_urls = os.getenv("FRONTEND_URLS") or os.getenv("FRONTEND_URL")
+
+    if not frontend_urls:
+        return DEFAULT_FRONTEND_URLS
+
+    parsed_urls = [
+        url.strip().rstrip("/")
+        for url in frontend_urls.split(",")
+        if url.strip()
+    ]
+
+    return parsed_urls or DEFAULT_FRONTEND_URLS
+
+
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=get_frontend_urls(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
