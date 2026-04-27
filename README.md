@@ -194,3 +194,10 @@ uvicorn main:app --reload
 cd /Users/srijitaseth/scoutai/scoutai/frontend
 npm run dev
 ```
+
+## Project Links
+
+- Project document: https://drive.google.com/file/d/1D9QYq8Z4fwBX3gUwArV4zpCA1jb8Vctr/view?usp=sharing
+- Deployed project: https://scoutai-three.vercel.app/
+- Demo video: https://drive.google.com/file/d/1-6PkkY2MwLbcHWvdVAYkdQ1ulih2HsfT/view?usp=drivesdk
+- Email: srijitaseth02@gmail.com
