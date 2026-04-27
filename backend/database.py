@@ -1,6 +1,16 @@
+import os
 import sqlite3
+from pathlib import Path
 
-DB_NAME = "scoutai.db"
+
+def get_default_db_path():
+    if os.getenv("VERCEL"):
+        return "/tmp/scoutai.db"
+
+    return str(Path(__file__).with_name("scoutai.db"))
+
+
+DB_NAME = os.getenv("SCOUTAI_DB_PATH", get_default_db_path())
 
 
 def get_connection():

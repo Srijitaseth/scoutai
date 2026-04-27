@@ -1,5 +1,6 @@
 import os
 import shutil
+from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -54,8 +55,11 @@ app.add_middleware(
 
 create_tables()
 
-UPLOAD_DIR = "uploads"
-EXPORT_DIR = "exports"
+BASE_DIR = Path(__file__).resolve().parent
+RUNTIME_DIR = Path("/tmp") if os.getenv("VERCEL") else BASE_DIR
+
+UPLOAD_DIR = RUNTIME_DIR / "uploads"
+EXPORT_DIR = RUNTIME_DIR / "exports"
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(EXPORT_DIR, exist_ok=True)

@@ -1,7 +1,4 @@
-const BASE_URL = import.meta.env.VITE_BACKEND_URL;
-
-if (!BASE_URL)
-  throw new Error("No Backend URL set in env");
+const BASE_URL = (import.meta.env.VITE_BACKEND_URL || "/api").replace(/\/$/, "");
 
 export async function analyzeResumes(jdText, files) {
   const formData = new FormData();

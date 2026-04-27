@@ -151,23 +151,30 @@ Open the frontend URL in your browser.
 
 ## Vercel Environment Variables
 
-Set these in your Vercel project settings:
+For a same-domain Vercel deployment, deploy this repository as one Vercel project. The frontend is served from `/` and the FastAPI backend is served from `/api`.
+
+Set this in your Vercel project settings:
 
 ```text
-FRONTEND_URL=https://your-frontend.vercel.app
+FRONTEND_URL=https://your-app.vercel.app
 ```
 
-If you deploy separate preview/production frontends, use:
+Set your Gemini and optional email variables in the same Vercel project:
 
 ```text
-FRONTEND_URLS=https://your-production.vercel.app,https://your-preview.vercel.app
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-2.5-flash-lite
+SCOUTAI_EMAIL=your_email@gmail.com
+SCOUTAI_EMAIL_PASSWORD=your_gmail_app_password_here
 ```
 
-For the Vite frontend, set the backend URL:
+The frontend defaults to calling the backend at `/api`, so `VITE_BACKEND_URL` is not needed for same-domain deployment. If you deploy the backend separately, set:
 
 ```text
 VITE_BACKEND_URL=https://your-backend-domain.example.com
 ```
+
+For local development, keep running the backend at `http://127.0.0.1:8000` and the frontend at `http://localhost:5173`. Vite proxies `/api` requests to the local backend.
 
 ## Sample Run Commands
 
